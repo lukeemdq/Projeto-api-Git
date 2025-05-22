@@ -1,5 +1,5 @@
-import { baseUrl, repositoriesQuantity } from "./variables.js";
-
+import { user } from "./services/user.js";
+import { repos } from "./services/repositories.js";
 
 
 
@@ -22,17 +22,9 @@ inputSearch.addEventListener("keyup", (e) => {
   }
 });
 
-async function user(userName) {
-  const response = await fetch(`${baseUrl}${userName}`);
-  return response.json();
-}
 
-async function repos(userName) {
-  const response = await fetch(
-    `${baseUrl}${userName}/repos?per_page=${repositoriesQuantity}`
-  );
-  return response.json();
-}
+
+
 
 function getUserProfile(userName) {
   user(userName).then((userData) => {
