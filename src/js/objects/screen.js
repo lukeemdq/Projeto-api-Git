@@ -23,6 +23,9 @@ const screen = {
                                        </div>       `
       }
   },
+  renderNotFound() {
+    this.userProfile.innerHTML = "<h3>Usuário não encontrato</h3>"
+  }
 };
 
 export { screen };

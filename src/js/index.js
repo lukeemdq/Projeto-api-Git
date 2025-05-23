@@ -11,8 +11,16 @@ const inputSearch = document.getElementById("input-search");
 
 btnSearch.addEventListener("click", () => {
   const userName = inputSearch.value;
+  if(validateInput(userName)) return
   getUserData(userName);
 });
+
+function validateInput(userName) {
+   if (userName.length === 0 ) {
+    alert('preencha o campo com o nome do usuário do GitHub')
+    return true
+  }
+}
 
 inputSearch.addEventListener("keyup", (e) => {
   const userName = e.target.value;
@@ -20,25 +28,27 @@ inputSearch.addEventListener("keyup", (e) => {
   const isEnterKeyPressed = key === 13;
 
   if (isEnterKeyPressed) {
-    getUserData(userName);
-    
+    if(validateInput(userName)) return
+    getUserData(userName);   
   }
 });
-
-
-
-
 
 async function getUserData(userName) {
 
   const useResponse = await getUser(userName);
-  const repositoriesReponse = await repos(userName)
+  if(useResponse.message === "Not Found") {
+    screen.renderNotFound()
+  } else {
+const repositoriesReponse = await repos(userName)
   user.setInfo(useResponse)
   user.setRepositories(repositoriesReponse)
+  screen.renderUser(user)
+  }
+  
   // user.repositories(repositories)
 
 
-  screen.renderUser(user)
+  
   
 }
 
