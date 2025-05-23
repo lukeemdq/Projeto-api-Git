@@ -12,8 +12,8 @@ const screen = {
     `;
     let repositoriesItens = "";
     user.repositories.forEach((repo) => {
-      repositoriesItens += `<li><a href="${repo.html_url} target="_blank">${repo.name}</a> </li>`;
-
+      repositoriesItens += `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a> </li>`;
+        console.log(repositoriesItens)
       
     });
     if(user.repositories.length > 0) {
