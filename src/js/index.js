@@ -1,5 +1,6 @@
 import { getUser } from "./services/user.js";
 import { repos } from "./services/repositories.js";
+import { getEvents } from "./services/events.js";
 
 import { user } from "./objects/user.js";
 import { screen } from "./objects/screen.js";
@@ -13,7 +14,10 @@ btnSearch.addEventListener("click", () => {
   const userName = inputSearch.value;
   if(validateInput(userName)) return
   getUserData(userName);
+
+  
 });
+
 
 function validateInput(userName) {
    if (userName.length === 0 ) {
@@ -40,9 +44,12 @@ async function getUserData(userName) {
     screen.renderNotFound()
   } else {
 const repositoriesReponse = await repos(userName)
+const eventsResponse = await getEvents(userName)
   user.setInfo(useResponse)
   user.setRepositories(repositoriesReponse)
+  user.setEvents(eventsResponse)
   screen.renderUser(user)
+  console.log(eventsResponse)
   }
   
   // user.repositories(repositories)

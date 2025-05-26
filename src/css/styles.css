@@ -193,3 +193,12 @@ main {
     padding: 0;
   }
 }
+
+.events {
+  display: flex;
+  flex-direction: column;
+}
+
+.bold {
+  font-weight: 800;
+}
