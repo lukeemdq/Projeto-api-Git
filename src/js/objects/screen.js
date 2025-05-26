@@ -13,7 +13,11 @@ const screen = {
     `;
     let repositoriesItens = "";
     user.repositories.forEach((repo) => {
-      repositoriesItens += `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a> </li>`;
+      repositoriesItens += `<li><a href="${repo.html_url}" target="_blank">${repo.name} <br> <span class="icones-repo">🍴${repo.forks} </span>
+                                                                                        <span class="icones-repo">⭐${repo.stargazers_count} </span>
+                                                                                        <span class="icones-repo">👀${repo.watchers} </span>
+                                                                                        <span class="icones-repo">💻${repo.language} </span>   </a> </li>
+                                                                                              `;
         
       
     });

@@ -49,7 +49,7 @@ const eventsResponse = await getEvents(userName)
   user.setRepositories(repositoriesReponse)
   user.setEvents(eventsResponse)
   screen.renderUser(user)
-  console.log(eventsResponse)
+  // console.log(eventsResponse)
   }
   
   // user.repositories(repositories)
